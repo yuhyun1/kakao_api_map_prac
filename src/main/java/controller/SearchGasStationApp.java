@@ -1,15 +1,15 @@
+package controller;
+
+import api.KakaoApi;
+import view.InputReader;
+import view.OutputPrinter;
+
 import java.io.IOException;
 
 public class SearchGasStationApp {
-    private final InputReader inputReader;
-    private final KakaoApi kakaoApi;
-    private final OutputPrinter outputPrinter;
-
-    public SearchGasStationApp(InputReader inputReader, KakaoApi kakaoApi, OutputPrinter outputPrinter) {
-        this.inputReader = inputReader;
-        this.kakaoApi = kakaoApi;
-        this.outputPrinter = outputPrinter;
-    }
+    private final InputReader inputReader = new InputReader();
+    private final KakaoApi kakaoApi = new KakaoApi();
+    private final OutputPrinter outputPrinter = new OutputPrinter();
 
     public void run() throws IOException, InterruptedException {
 

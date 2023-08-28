@@ -1,3 +1,6 @@
+package api;
+
+import config.ConfigLoader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KakaoApi {
+    ConfigLoader configLoader = new ConfigLoader();
 
     private double latitude;
     private double longitude;
@@ -29,6 +33,7 @@ public class KakaoApi {
     private List<JSONObject> extractedInfoList = new ArrayList<>();
     private static final String BASE_URL = "https://dapi.kakao.com/v2/local/search/";
     private static final String CATEGORY_CODE = "OL7";
+    private static final String REST_API_KEY = ConfigLoader.getApiKey();
 
     public List<JSONObject> getExtractedInfoList() {
         return extractedInfoList;
@@ -40,7 +45,7 @@ public class KakaoApi {
         request = HttpRequest.newBuilder().
                 GET().
                 uri(URI.create(url)).
-                header("Authorization", "KakaoAK f2368397b97c4ca0ceb4535f42fbeb13").
+                header("Authorization", REST_API_KEY).
                 build();
         response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
@@ -70,7 +75,7 @@ public class KakaoApi {
         request = HttpRequest.newBuilder().
                 GET().
                 uri(URI.create(url)).
-                header("Authorization", "KakaoAK f2368397b97c4ca0ceb4535f42fbeb13").
+                header("Authorization", REST_API_KEY).
                 build();
         response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
